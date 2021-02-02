@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
     # inherits from ApplicationController because in our config.ru we RUN ApplicationController only.
+    # manages the data related to user authentication
 
     get '/login' do 
 
