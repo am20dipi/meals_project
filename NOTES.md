@@ -31,6 +31,9 @@ GET        /meals/:id/edit     edit
 PATCH      /meals/:id          update
 DELETE     /meals/:id          destroy
 
+
+FLOW
+
 Browser makes a HTTP(get, post, patch...) request to a specific route.
 Sinatra receives the request and routes it to the appropriate action in the controller.
 The controller asks the model for the data.
