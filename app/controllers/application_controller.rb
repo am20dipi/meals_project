@@ -28,4 +28,5 @@ class ApplicationController < Sinatra::Base
       # If @user is undefined then define it as a whatever follows the ||= sign. 
       # We store the result of User.find to the instance variable @user.
     end
+  end
 end

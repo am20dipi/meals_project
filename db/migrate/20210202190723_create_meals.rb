@@ -1,8 +1,10 @@
 class CreateMeals < ActiveRecord::Migration
   def change
     create_table :meals do |t|
-
-      t.timestamps null: false
+      t.string :name
+      t.string :content
+      t.string :type
+      #t.timestamps null: false
     end
   end
 end
