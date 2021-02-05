@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
     # A macro that provides methods such as: .authenticate
 
     # a user has a name, an email, a password
+    #validates uniqueness email
+    #validates password confirmation: true
+    
 end
