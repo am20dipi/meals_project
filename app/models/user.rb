@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
     # A macro that provides methods such as: .authenticate. ActiveRecord is working with BCrypt.
     validates :name, :email, :password, presence: true
     # a user has a name, an email, a password
-    #validates uniqueness email
     #validates password confirmation: true
-
+    validates :email, uniqueness: true
+    #validates uniqueness email
 end
