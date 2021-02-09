@@ -3,36 +3,52 @@ class MealsController < ApplicationController
 
     # INDEX
     get '/meals' do 
-        binding.pry
-        @meals = Meal.all
-        #instance variable allows access in the view
-        erb :'meals/index' #rendering the index view
+        #binding.pry
+        if logged_in?
+            @meals = current_user.meals
+            #instance variable allows access in the view
+            # using ActiveRecord associations to call .meals on current_user to receive only their meals; not everyone elses
+            erb :'meals/index' #rendering the index view
+        else
+            redirect "/login"
+        end
     end
 
     
     # NEW
     get '/meals/new' do 
-        @users = User.all # allows access to the view; allows for iteration in the view
-        erb :'meals/new' # render to new view
+        if logged_in?
+            erb :'meals/new' # render to new view
+        else
+            redirect "/login"
+        end
     end
 
     post '/meals' do 
-        user = User.find_by(id: params[:user_id])
-        meal = user.meals.create(params)
+        meal = current_user.meals.build(params)
+        # Active Record association; calling .meals on current_user
+        # .build method; does NOT save; returns T or F
         if meal.save 
             redirect "/meals/#{meal.id}" 
         else
             redirect "/meals/new"
         end
-
     end
 
 
 
     # UPDATE
     get '/meals/:id/edit' do 
-        @meal = Meal.find_by(id: params[:id])
-        erb :'meals/edit' # render the edit form
+        if logged_in?
+            @meal = current_user.meals.find_by(params)
+            if @meal #only if a meal exists can you render the edit form.
+                erb :'meals/edit' # render the edit form
+            else
+                redirect "/meals"
+            end
+        else
+            redirect "/login"
+        end
     end
 
     patch '/meals/:id' do 

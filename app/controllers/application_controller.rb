@@ -23,12 +23,12 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      @user ||= User.find(id: params[:id])
+      @user ||= User.find_by(id: session[:user_id]) if logged_in?
       # ||= "or equals" 
       # Memoization: there may be multiple calls to current_user
-      # Is there a current_user ? If not hand one in. 
+      # Is there a current_user ? give it to me. If not, hand one in. 
       # If @user is undefined then define it as a whatever follows the ||= sign. 
-      # We store the result of User.find to the instance variable @user.
+      # We store the result of User.find_by to the instance variable @user.
     end
   end
 end

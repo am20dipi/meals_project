@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
     
     get '/logout' do
         session.clear
+        redirect "/login"
     end
     # the act of logging out is the simple action of clearing the session hash; meaning no user id is stored. 
     

@@ -9,6 +9,7 @@ use Rack::MethodOverride #middleware used to override post and use patch.
 
 use MealsController
 use SessionsController
+use UsersController
 run ApplicationController
 # this tells Rack to start the app. 
 # we mount our controllers, and run ApplicationController. 
