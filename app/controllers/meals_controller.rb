@@ -43,10 +43,28 @@ class MealsController < ApplicationController
 
 
     # UPDATE
+    get '/meals/:id/edit' do 
+        @meal = Meal.find_by(id: params[:id])
+        erb :'meals/edit' # render the edit form
+    end
+
+    patch '/meals/:id' do 
+        meal = Meal.find_by(id: params[:id])
+        if meal.update(name: params[:name], content: params[:content], type: params[:type]) #checking to see if meal exists and has presence in its validations 
+            redirect "/meals/#{meal.id}"
+        else
+            redirect "/meals/#{meal.id}/edit"
+        end
+    end
 
 
 
     # DELETE
+    delete '/meals/:id' do 
+        @meal = Meal.find_by(id: params[:id])
+        @meal.destroy
+        redirect "/meals"
+    end
 
 
 end

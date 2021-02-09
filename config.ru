@@ -5,6 +5,8 @@ if ActiveRecord::Base.connection.migration_context.needs_migration?
 end
 
 
+use Rack::MethodOverride #middleware used to override post and use patch. 
+
 use MealsController
 use SessionsController
 run ApplicationController
