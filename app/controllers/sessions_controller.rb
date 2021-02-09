@@ -2,22 +2,28 @@ class SessionsController < ApplicationController
     # inherits from ApplicationController because in our config.ru we RUN ApplicationController only.
     # manages the data related to user authentication
 
-    get '/signup' do 
-        erb: 'users/signup'
-        # render signup view
+    
+    get '/login' do 
+        erb :'sessions/login'
     end
 
-    post '/signup' do 
-        @user = User.new(params[:user])
-        if @user.save 
-            session[:user_id] = @user.id
-            redirect '/meals'
+    post '/login' do 
+        user = User.find_by(email: params[:email]) # find_by returns nil if it doesnt not find anything
+        if user && user.authenticate(params[:password]) # if user exists AND user is authenticated(via BCrypt through password), log them in through session
+            session[:user_id] = user.id # the line of login; going into the session hash finding the :user_id key and setting this user.id as the value 
+            redirect "/meals"
         else
-            erb :'users/signup'
+            redirect "/login"
         end
-        # when the user submit the form I take the input’s values in a params hash in the post /signup route, make a new user instance and save it in the database. 
     end
+    # the act of logging in is the simple action of storing a user's id in the session hash.
+
     
+    
+    get '/logout' do
+        session.clear
+    end
+    # the act of logging out is the simple action of clearing the session hash; meaning no user id is stored. 
     
     
     

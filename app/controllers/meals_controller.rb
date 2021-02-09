@@ -18,7 +18,7 @@ class MealsController < ApplicationController
 
     post '/meals' do 
         user = User.find_by(id: params[:user_id])
-        meal = user.meals.build(params)
+        meal = user.meals.create(params)
         if meal.save 
             redirect "/meals/#{meal.id}" 
         else

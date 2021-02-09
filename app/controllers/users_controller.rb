@@ -3,24 +3,20 @@ class UsersController < ApplicationController
     # manages the data related to user authentication
     
     
-    get '/login' do 
-        erb :'sessions/login'
+    get '/signup' do 
+        erb :'users/signup'
+        # render signup view
     end
 
-    post '/login' do 
-    
+    post '/signup' do 
+        @user = User.new(params[:user])
+        if @user.save 
+            session[:user_id] = @user.id
+            redirect '/meals'
+        else
+            erb :'users/signup'
+        end
+        # when the user submit the form I take the input’s values in a params hash in the post /signup route, make a new user instance and save it in the database. 
     end
-    # the act of logging in is the simple action of storing a user's id in the session hash.
-
-    
-
-
-    
-
-    
-    
-    get '/logout' do
-
-    end
-    # the act of logging out is the simple action of clearing the session hash; meaning no user id is stored. 
+   
 end
