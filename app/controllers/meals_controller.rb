@@ -3,6 +3,7 @@ class MealsController < ApplicationController
 
     # INDEX
     get '/meals' do 
+        binding.pry
         @meals = Meal.all
         #instance variable allows access in the view
         erb :'meals/index' #rendering the index view
@@ -28,20 +29,6 @@ class MealsController < ApplicationController
 
 
 
-    # SHOW
-    get '/meals/:id' do # :id adds the key in the params hash; the number after the colon becomes the key in the hash
-        @meal = Meal.find_by(id: params[:id])
-
-        if @meal #if a meal exists, then render the show view.
-            erb :'meals/show'
-        else #if not, then redirect back to index.
-            redirect "/meals"
-        end
-
-    end
-
-
-
     # UPDATE
     get '/meals/:id/edit' do 
         @meal = Meal.find_by(id: params[:id])
@@ -55,6 +42,20 @@ class MealsController < ApplicationController
         else
             redirect "/meals/#{meal.id}/edit"
         end
+    end
+
+
+
+    # SHOW
+    get '/meals/:id' do # :id adds the key in the params hash; the number after the colon becomes the key in the hash
+        @meal = Meal.find_by(id: params[:id])
+
+        if @meal #if a meal exists, then render the show view.
+            erb :'meals/show'
+        else #if not, then redirect back to index.
+            redirect "/meals"
+        end
+
     end
 
 
