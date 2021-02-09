@@ -8,6 +8,24 @@ class MealsController < ApplicationController
         erb :'meals/index' #rendering the index view
     end
 
+    
+    # NEW
+    get '/meals/new' do 
+        @users = User.all # allows access to the view; allows for iteration in the view
+        erb :'meals/new' # render to new view
+    end
+
+    post '/meals' do 
+        user = User.find_by(id: params[:user_id])
+        meal = user.meals.build(params)
+        if meal.save 
+            redirect "/meals/#{meal.id}" 
+        else
+            redirect "/meals/new"
+        end
+
+    end
+
 
 
     # SHOW
@@ -21,10 +39,6 @@ class MealsController < ApplicationController
         end
 
     end
-
-
-
-    # NEW
 
 
 
