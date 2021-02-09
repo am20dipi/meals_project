@@ -3,5 +3,6 @@
 <br>
 <% @meals.each do |m| %> <!-- iterating through each instance of class Meal to display -->
     <p><a href="/meals/<%= m.id %>"><%= m.name %></a></p> <!-- a tag allows for clickable content --> <!-- when the link is clicked it will redirect to the specific meal indicated by the id number in the url-->
-
 <% end %>
+
+<p><a href="/meals/new">Add a Meal</a></p>
