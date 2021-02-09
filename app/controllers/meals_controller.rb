@@ -11,6 +11,16 @@ class MealsController < ApplicationController
 
 
     # SHOW
+    get '/meals/:id' do # :id adds the key in the params hash; the number after the colon becomes the key in the hash
+        @meal = Meal.find_by(id: params[:id])
+
+        if @meal #if a meal exists, then render the show view.
+            erb :'meals/show'
+        else #if not, then redirect back to index.
+            redirect "/meals"
+        end
+
+    end
 
 
 
