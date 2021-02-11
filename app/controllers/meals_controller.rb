@@ -1,14 +1,14 @@
-class MealsController < ApplicationController
+class FoodsController < ApplicationController
     # inherits from ApplicationController because in our config.ru we RUN ApplicationController only.
 
     # INDEX
-    get '/meals' do 
+    get '/foods' do 
         #binding.pry
         if logged_in?
-            @meals = current_user.meals
+            @foods = current_user.foods
             #instance variable allows access in the view
             # using ActiveRecord associations to call .meals on current_user to receive only their meals; not everyone elses
-            erb :'meals/index' #rendering the index view
+            erb :'foods/index' #rendering the index view
         else
             redirect "/login"
         end
@@ -16,64 +16,39 @@ class MealsController < ApplicationController
 
     
     # NEW
-    get '/meals/new' do 
+    get '/foods/new' do 
         if logged_in?
-            erb :'meals/new' # render to new view
+            erb :'foods/new' # render to new view
         else
             redirect "/login"
         end
     end
 
-    post '/meals' do 
-        meal = current_user.meals.build(params)
-        # Active Record association; calling .meals on current_user
-        # .build method; does NOT save; returns T or F
-        if meal.save 
-            redirect "/meals/#{meal.id}" 
-        else
-            redirect "/meals/new"
-        end
-    end
-
-
-
-    # UPDATE
-    get '/meals/:id/edit' do 
-        if logged_in?
-            @meal = current_user.meals.find_by(params)
-            if @meal #only if a meal exists can you render the edit form.
-                erb :'meals/edit' # render the edit form
+    post '/foods' do 
+        if logged_in? 
+            food = current_user.foods.build(name: params[:name], content: params[:content], meal: params[:meal])
+            # Active Record association; calling .meals on current_user
+            # .build method; does NOT save; returns T or F
+            if food.save 
+                redirect "/foods/#{food.id}" 
             else
-                redirect "/meals"
+                redirect "/foods/new"
             end
         else
-            redirect "/login"
+            redirect "/"
         end
     end
-
-    patch '/meals/:id' do 
-        # comes from Middleware Rack::MethodOverride; 
-        # it is looking for key "_method"; if there is one in params, the value associated with the key is PATCH.
-        meal = current_user.meals.find_by(id: params[:id])
-        
-        if meal.update(name: params[:name], content: params[:content], type: params[:type]) #checking to see if meal exists and has presence in its validations 
-            redirect "/meals/#{meal.id}"
-        else
-            redirect "/meals/#{meal.id}/edit"
-        end
-    end
-
 
 
     # SHOW
-    get '/meals/:id' do # :id adds the key in the params hash; the number after the colon becomes the key in the hash
+    get '/foods/:id' do # :id adds the key in the params hash; the number after the colon becomes the key in the hash
         if logged_in?
-            @meal = current_user.meals.find_by(id: params[:id])
+            @food = current_user.foods.find_by(id: params[:id])
 
-            if @meal #if a meal exists, then render the show view.
-                erb :'meals/show'
+            if @food #if a meal exists, then render the show view.
+                erb :'foods/show'
             else #if not, then redirect back to index.
-                redirect "/meals"
+                redirect "/foods"
             end
         else
             redirect "login"
@@ -82,12 +57,45 @@ class MealsController < ApplicationController
 
 
 
-    # DELETE
-    delete '/meals/:id' do 
+
+    # UPDATE
+    get '/foods/:id/edit' do 
         if logged_in?
-            @meal = current_user.meals.find_by(id: params[:id])
-            @meal.destroy
-            redirect "/meals"
+            @food = current_user.foods.find_by(params)
+            if @food #only if a meal exists can you render the edit form.
+                erb :'foods/edit' # render the edit form
+            else
+                redirect "/foods"
+            end
+        else
+            redirect "/login"
+        end
+    end
+
+    patch '/foods/:id' do 
+        # comes from Middleware Rack::MethodOverride; 
+        # it is looking for key "_method"; if there is one in params, the value associated with the key is PATCH.
+        food = current_user.foods.find_by(id: params[:id])
+        
+        if food.update(name: params[:name], content: params[:content], meal: params[:meal]) #checking to see if meal exists and has presence in its validations 
+            redirect "/foods/#{food.id}"
+        else
+            redirect "/foods/#{food.id}/edit"
+        end
+    end
+
+
+
+    
+
+
+
+    # DELETE
+    delete '/foods/:id' do 
+        if logged_in?
+            @food = current_user.foods.find_by(id: params[:id])
+            @food.destroy
+            redirect "/foods"
         else
             redirect "/login"
         end

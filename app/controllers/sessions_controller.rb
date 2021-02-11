@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         user = User.find_by(email: params[:email]) # find_by returns nil if it doesnt not find anything
         if user && user.authenticate(params[:password]) # if user exists AND user is authenticated(via BCrypt through password), log them in through session
             session[:user_id] = user.id # the line of login; going into the session hash finding the :user_id key and setting this user.id as the value 
-            redirect "/meals"
+            redirect "/foods"
         else
             redirect "/login"
         end
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     
     get '/logout' do
         session.clear
-        redirect "/login"
+        redirect "/"
     end
     # the act of logging out is the simple action of clearing the session hash; meaning no user id is stored. 
     

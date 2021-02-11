@@ -9,12 +9,12 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do 
-        @user = User.new(params)
+        @user = User.new(name: params["name"], email: params["email"], password: params["password"])
         if @user.save 
             session[:user_id] = @user.id
-            redirect "/meals"
+            redirect "/foods"
         else
-            erb :'users/signup'
+            redirect '/signup'
         end
         # when the user submit the form I take the input’s values in a params hash in the post /signup route, make a new user instance and save it in the database. 
     end

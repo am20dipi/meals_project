@@ -1,0 +1,25 @@
+
+<h2>Edit your Meal</h2>
+<hr>
+<br>
+<form method="POST" action="/foods/<%= @food.id %>">
+<input type="hidden" id="hidden" name="_method" value="PATCH"><!-- the hidden values of the attributes tell Rack to override the post and to patch-->
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" value="<%= @food.name %>">
+    <br>
+    <br>
+    <label>Contents: <textarea name="content" id="content" rows="2" cols="20"><%= @food.content %></textarea></label>
+    <br>
+    <br>
+    <label>Select Type:</label>
+        <select id="meal" name="meal">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="snack">Snack</option>
+        </select>
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+
+</form>

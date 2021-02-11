@@ -1,0 +1,8 @@
+<h1>Your Food Log</h1>
+<hr>
+<br>
+<% @foods.each do |f| %> <!-- iterating through each instance of class Meal to display -->
+    <p><a href="/foods/<%= f.id %>"><%= f.name %></a></p> <!-- a tag allows for clickable content --> <!-- when the link is clicked it will redirect to the specific meal indicated by the id number in the url-->
+<% end %>
+
+<button><a href="/foods/new">Add a Food</a></button>

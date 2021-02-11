@@ -17,7 +17,8 @@ class ApplicationController < Sinatra::Base
   helpers do 
 
     def logged_in?
-      !!session[:user_id] = user.id
+      #binding.pry
+      !!session[:user_id]
       # the double bang operator return T or F
       # we are asking "is someone logged in?" via if their user id is stored in the sessions hash
     end

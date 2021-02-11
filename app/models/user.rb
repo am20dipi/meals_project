@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
     validates :name, :email, :password, presence: true
     # a user has a name, an email, a password
     #validates password confirmation: true
-    validates :email, uniqueness: true
+    validates_uniqueness_of :email
     #validates uniqueness email
 end
