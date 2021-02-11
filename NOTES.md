@@ -43,3 +43,15 @@ The controller sends the data to the view.
 The view renders and parses HTML.
 The view sends it back to the controller.
 The controller sends HTML to the browser to view.
+
+
+
+
+
+<label for="meal">Select Type:</label>
+        <select name="meal" id="meal">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="snack">Snack</option>
+        </select>

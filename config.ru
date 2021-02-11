@@ -7,7 +7,7 @@ end
 
 use Rack::MethodOverride #middleware used to override post and use patch. 
 
-use MealsController
+use FoodsController
 use SessionsController
 use UsersController
 run ApplicationController

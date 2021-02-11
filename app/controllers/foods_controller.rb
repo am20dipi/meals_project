@@ -26,7 +26,7 @@ class FoodsController < ApplicationController
 
     post '/foods' do 
         if logged_in? 
-            food = current_user.foods.build(name: params[:name], content: params[:content], meal: params[:meal])
+            food = current_user.foods.build(id: params[:id])
             # Active Record association; calling .meals on current_user
             # .build method; does NOT save; returns T or F
             if food.save 
@@ -36,22 +36,6 @@ class FoodsController < ApplicationController
             end
         else
             redirect "/"
-        end
-    end
-
-
-    # SHOW
-    get '/foods/:id' do # :id adds the key in the params hash; the number after the colon becomes the key in the hash
-        if logged_in?
-            @food = current_user.foods.find_by(id: params[:id])
-
-            if @food #if a meal exists, then render the show view.
-                erb :'foods/show'
-            else #if not, then redirect back to index.
-                redirect "/foods"
-            end
-        else
-            redirect "login"
         end
     end
 
@@ -85,6 +69,23 @@ class FoodsController < ApplicationController
     end
 
 
+    # SHOW
+    get '/foods/:id' do # :id adds the key in the params hash; the number after the colon becomes the key in the hash
+        if logged_in?
+            @food = current_user.foods.find_by(id: params[:id])
+
+            if @food #if a meal exists, then render the show view.
+                erb :'foods/show'
+                #redirect "/foods/#{@food.id}"
+            else #if not, then redirect back to index.
+                redirect "/foods"
+            end
+        else
+            redirect "/login"
+        end
+    end
+
+
 
     
 
@@ -94,7 +95,9 @@ class FoodsController < ApplicationController
     delete '/foods/:id' do 
         if logged_in?
             @food = current_user.foods.find_by(id: params[:id])
-            @food.destroy
+            if @food
+                @food.destroy
+            end
             redirect "/foods"
         else
             redirect "/login"
