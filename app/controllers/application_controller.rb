@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    erb :home
   end
 
 
@@ -30,5 +30,7 @@ class ApplicationController < Sinatra::Base
       # If @user is undefined then define it as a whatever follows the ||= sign. 
       # We store the result of User.find_by to the instance variable @user.
     end
+
   end
+
 end

@@ -9,9 +9,9 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do 
-        user = User.new(email: params[:email])
-        if user.save 
-            session[:user_id] = user.id
+        @user = User.new(params)
+        if @user.save 
+            session[:user_id] = @user.id
             redirect "/meals"
         else
             erb :'users/signup'
