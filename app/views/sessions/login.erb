@@ -1,16 +1,21 @@
-<h1>Login to Your Account</h1>
+<head>
+    <h1>Login to Your Account</h1>
+</head>
 <br>
 <br>
-<form method="POST" action="/login">
-    <label for="email">Email:</label>
-    <input name="email" id="email" type="text">
+<body>
+    <form method="POST" action="/login">
+        <label for="email">Email:</label>
+        <input name="email" id="email" type="text">
+        <br>
+        <br>
+        <label for="password">Password:</label>
+        <input name="password" id="password" type="password">
+        <br>
+        <br>
+        <input type="submit" value="Submit" id="submit">
+    </form>
     <br>
     <br>
-    <label for="password">Password:</label>
-    <input name="password" id="password" type="password">
-    <br>
-    <br>
-    <input type="submit" value="Submit">
-</form>
-<br>
-<button><a href="/">Go Back</a></button>
+    <center><button><a href="/" class="button">Go Back</a></button></center>
+</body>

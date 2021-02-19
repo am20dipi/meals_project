@@ -47,6 +47,10 @@
     line-height: 36px;
   }
 
+  h5 {
+    color:rgb(202, 145, 92)
+  }
+
   p {
     margin-bottom: 18px;
     text-transform: capitalize;
@@ -85,11 +89,40 @@
   }
 
   footer.branding {
-    border-top: 2px solid rgb(201, 223, 189);
+    border-top: 2px solid rgb(199, 161, 161);
     margin-top: 20px;
     padding-top: 20px;
   }
 }
+
+a.button{
+  display:inline-block;
+  padding:0.35em 1.2em;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Courier New', Courier, monospace;
+  font-weight:300;
+  color:#000000;
+  text-align:center;
+  transition: all 0.2s;
+}
+
+#submit {
+  display:inline-block;
+  padding:0.35em 1.2em;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.05em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Courier New', Courier, monospace;
+  font-weight:300;
+  color:#000000;
+  text-align:center;
+  transition: all 0.2s;
+}
+
 
 @media screen and (max-width: 600px) {
   .wrapper {

@@ -1,17 +1,20 @@
-<h1><%= @food.name.capitalize %></h1>
-<h2> </h2>
+<head>
+    <h1><%= @food.name.capitalize %></h1>
+    <h2> </h2>
+</head>
 <br>
-<p>Content:  <strong><%= @food.content %></strong></p>
-<p>Type of Meal:  <strong><%= @food.meal %></strong></p>
-<p>Would You Make It Again?  <strong><%= @food.make_again? %></strong></p>
-
-
-<button><a href="/foods/ <%= @food.id %>/edit">Edit</a></button>
-<br>
-<br>
-        <form method="POST" action="/foods/<%= @food.id %>">
-            <input type="hidden" id="hidden" name="_method" value="DELETE">
-            <input type="submit" value="Delete">
-        </form>
-<br>
-<button><a href="/foods">Go Back</a></button>
+<body>
+    <p>Content:  <strong><%= @food.content %></strong></p>
+    <p>Type of Meal:  <strong><%= @food.meal %></strong></p>
+    <p>Would You Make It Again?  <strong><%= @food.make_again? %></strong></p>
+    <center>
+        <br>
+            <form method="POST" action="/foods/<%= @food.id %>">
+                <input type="hidden" id="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete" id="submit">
+            </form>
+        <br>
+        <button><a href="/foods/ <%= @food.id %>/edit" class="button">Edit</a></button>
+        <button><a href="/foods" class="button">Go Back</a></button>
+    </center>
+</body>

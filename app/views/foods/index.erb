@@ -1,7 +1,10 @@
 <head>
     <h2>Your Food Log</h2>
+    <center>
+        <h4>"Part of the secret of success is to eat what you like and let the food fight it out inside" -- Mark Twain</h4>
+    </center>
 </head>
-<h5>"Part of the secret of success is to eat what you like and let the food fight it out inside" -- Mark Twain</h5>
+<br>
 <br>
 <body>
     <% @foods.each do |f| %> <!-- iterating through each instance of class Meal to display --> 
@@ -9,9 +12,11 @@
     <% end %>
     <br>
     <br>
-    <button><a href="/foods/new">Add a Food</a></button>
-    <br>
-    <br>
-    <button><a href="/logout">Logout</a></button>
+    <center>
+        <button><a href="/foods/new" class="button">Add a New Food</a></button>
+        <br>
+        <br>
+        <button><a href="/logout" class="button">Logout</a></button>
+    </center>
 </body>
 
