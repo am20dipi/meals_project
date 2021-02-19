@@ -1,21 +1,31 @@
-<h2>Add a New Food to Your Journal</h2>
-
+<head>
+    <h2>Add a New Food to Your Journal</h2>
+</head>
 <br>
-<form method="POST" action="/foods">
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name">
-    <br>
-    <br>
-    <label>Contents: <textarea name="content" id="content" rows="2" cols="20" placeholder="what was in your meal?"></textarea></label>
-    <br>
-    <br>
-    <label>Type:  <input type="text" name="meal" id="meal" placeholder=" breakfast, lunch, e.g"></label>
-    <br>
-    <br>
-    <label>Make Again?  <input type="text" name="make_again?" id="make_again?"></label>
-    <br>
-    <br>
-    <input type="submit" value="Submit">
-    <br>
-    <br>
-</form>
+<body>
+    <form method="POST" action="/foods">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <br>
+        <label>Contents: <textarea name="content" id="content" rows="2" cols="20" placeholder="what was in your meal?"></textarea></label>
+        <br>
+        <br>
+        <label>Type:  <input type="text" name="meal" id="meal" placeholder=" breakfast, lunch, e.g"></label>
+        <br>
+        <br>
+        <p>Make Again?</p>  
+            <input type="radio" name="make_again?" id="yes" value="yes" checked>
+            <label for="yes">Yes</label>
+
+            <input type="radio" name="make_again?" id="no" value="no">
+            <label for="no">No</label>
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+        <br>
+        <br>
+    </form>
+
+    <button><a href="/foods">Go Back</a></button>
+</body>

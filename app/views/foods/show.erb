@@ -1,9 +1,9 @@
 <h1><%= @food.name.capitalize %></h1>
 <h2> </h2>
 <br>
-<p>Content:  <%= @food.content %></p>
-<p>Type of Meal:  <%= @food.meal %></p>
-<p>Would You Make It Again?  <%= @food.make_again? %></p>
+<p>Content:  <strong><%= @food.content %></strong></p>
+<p>Type of Meal:  <strong><%= @food.meal %></strong></p>
+<p>Would You Make It Again?  <strong><%= @food.make_again? %></strong></p>
 
 
 <button><a href="/foods/ <%= @food.id %>/edit">Edit</a></button>
