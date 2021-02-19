@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_212930) do
     t.string "name"
     t.text "content"
     t.string "meal"
+    t.string "make_again?"
     t.integer "user_id"
   end
 

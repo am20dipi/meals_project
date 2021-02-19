@@ -49,6 +49,7 @@
 
   p {
     margin-bottom: 18px;
+    text-transform: capitalize;
   }
 
   .main {

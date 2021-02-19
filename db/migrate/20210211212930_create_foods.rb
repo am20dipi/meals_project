@@ -4,6 +4,7 @@ class CreateFoods < ActiveRecord::Migration[5.2]
       t.string :name
       t.text :content
       t.string :meal
+      t.string :make_again?
       t.integer :user_id
     end
 

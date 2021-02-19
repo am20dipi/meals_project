@@ -1,12 +1,17 @@
-<h2><%= @food.name %></h2>
-<hr>
+<h1><%= @food.name %></h1>
+<h2> </h2>
 <br>
-<p><%= @food.content %></p>
-<p><%= @food.meal %></p>
+<p>Content:  <%= @food.content %></p>
+<p>Type of Meal:  <%= @food.meal %></p>
+<p>Would You Make It Again?  <%= @food.make_again? %></p>
 
 
 <button><a href="/foods/ <%= @food.id %>/edit">Edit</a></button>
 <br>
-<a href="/foods/ <%= @food.id %>" method="DELETE">Delete</a>
+<br>
+        <form method="POST" action="/foods/<%= @food.id %>">
+            <input type="hidden" id="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete">
+        </form>
 <br>
 <button><a href="/foods">Go Back</a></button>

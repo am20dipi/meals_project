@@ -26,7 +26,7 @@ class FoodsController < ApplicationController
 
     post '/foods' do 
         if logged_in? 
-            food = current_user.foods.build(id: params[:id])
+            food = current_user.foods.build(params)
             # Active Record association; calling .meals on current_user
             # .build method; does NOT save; returns T or F
             if food.save 
@@ -61,7 +61,7 @@ class FoodsController < ApplicationController
         # it is looking for key "_method"; if there is one in params, the value associated with the key is PATCH.
         food = current_user.foods.find_by(id: params[:id])
         
-        if food.update(name: params[:name], content: params[:content], meal: params[:meal]) #checking to see if meal exists and has presence in its validations 
+        if food.update(name: params[:name], content: params[:content], meal: params[:meal], make_again?: params[:make_again?]) #checking to see if meal exists and has presence in its validations 
             redirect "/foods/#{food.id}"
         else
             redirect "/foods/#{food.id}/edit"
