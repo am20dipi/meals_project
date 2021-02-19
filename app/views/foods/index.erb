@@ -5,8 +5,11 @@
 
 <br>
 <% @foods.each do |f| %> <!-- iterating through each instance of class Meal to display --> 
-        <li>- <a href="/foods/<%= f.id %>"><%= f.name %></a></li> <!-- a tag allows for clickable content --> <!-- when the link is clicked it will redirect to the specific meal indicated by the id number in the url-->
+        <li>- <a href="/foods/<%= f.id %>"><%= f.name.capitalize %></a></li> <!-- a tag allows for clickable content --> <!-- when the link is clicked it will redirect to the specific meal indicated by the id number in the url-->
 <% end %>
 <br>
 <br>
 <button><a href="/foods/new">Add a Food</a></button>
+<br>
+<br>
+<button><a href="/logout">Logout</a></button>
