@@ -20,7 +20,7 @@
   }
 
   .wrapper {
-    background: #fff;
+    background: rgb(247, 231, 211);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -85,7 +85,7 @@
   }
 
   footer.branding {
-    border-top: 2px solid #ccc;
+    border-top: 2px solid rgb(201, 223, 189);
     margin-top: 20px;
     padding-top: 20px;
   }

@@ -11,7 +11,18 @@
         <label>Contents: <textarea name="content" id="content" rows="2" cols="20" placeholder="what was in your meal?"></textarea></label>
         <br>
         <br>
-        <label>Type:  <input type="text" name="meal" id="meal" placeholder=" breakfast, lunch, e.g"></label>
+        <p>Type:</p> 
+            <input type="radio" name="meal" id="breakfast" value="breakfast" checked>
+            <label for="breakfast">Breakfast</label>
+
+            <input type="radio" name="meal" id="lunch" value="lunch">
+            <label for="lunch">Lunch</label>
+
+            <input type="radio" name="meal" id="dinner" value="dinner">
+            <label for="dinner">Dinner</label>
+
+            <input type="radio" name="meal" id="snack" value="snack">
+            <label for="snack">Snack</label>
         <br>
         <br>
         <p>Make Again?</p>  
