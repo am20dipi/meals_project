@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
     end
 
     post '/login' do 
-        user = User.find_by(email: params[:email]) # find_by returns nil if it doesnt not find anything
-        if user && user.authenticate(params[:password]) # if user exists AND user is authenticated(via BCrypt through password), log them in through session
-            session[:user_id] = user.id # the line of login; going into the session hash finding the :user_id key and setting this user.id as the value 
+        user = User.find_by(email: params[:email])
+        if user && user.authenticate(params[:password])
+            session[:user_id] = user.id 
             redirect "/foods"
         else
             redirect "/login"
