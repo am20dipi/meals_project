@@ -1,11 +1,8 @@
 class UsersController < ApplicationController
-    # inherits from ApplicationController because in our config.ru we RUN ApplicationController only.
-    # manages the data related to user authentication
     
     
     get '/signup' do 
         erb :'users/signup'
-        # render signup view
     end
 
     post '/signup' do 

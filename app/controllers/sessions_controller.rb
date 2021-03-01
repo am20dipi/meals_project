@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-    # inherits from ApplicationController because in our config.ru we RUN ApplicationController only.
-    # manages the data related to user authentication
 
     
     get '/login' do 
@@ -16,7 +14,6 @@ class SessionsController < ApplicationController
             redirect "/login"
         end
     end
-    # the act of logging in is the simple action of storing a user's id in the session hash.
 
     
     
@@ -24,7 +21,6 @@ class SessionsController < ApplicationController
         session.clear
         redirect "/"
     end
-    # the act of logging out is the simple action of clearing the session hash; meaning no user id is stored. 
     
     
     

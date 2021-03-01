@@ -5,7 +5,7 @@
 <br>
 <body>
     <form method="POST" action="/foods/<%= @food.id %>">
-    <input type="hidden" id="hidden" name="_method" value="PATCH"><!-- the hidden values of the attributes tell Rack to override the post and to patch-->
+    <input type="hidden" id="hidden" name="_method" value="PATCH">
         <label for="name">Name:</label>
         <input type="text" name="name" id="name" value="<%= @food.name %>">
         <br>

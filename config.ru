@@ -11,5 +11,3 @@ use FoodsController
 use SessionsController
 use UsersController
 run ApplicationController
-# this tells Rack to start the app. 
-# we mount our controllers, and run ApplicationController. 

@@ -1,5 +1,4 @@
 class FoodsController < ApplicationController
-    # inherits from ApplicationController because in our config.ru we RUN ApplicationController only.
 
     # INDEX
     get '/foods' do 
